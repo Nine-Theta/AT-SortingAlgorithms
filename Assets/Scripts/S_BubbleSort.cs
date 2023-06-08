@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bubble Sort", menuName = "Sorting Methods/Bubble")]
 public class S_BubbleSort : S_SortingMethod
 {
-    [ShowNonSerializedField]
+    [SerializeField, EnableIf("_enableFieldEdit")]
     private bool _madechange = false;
     public bool isSetup { get; private set; } = false;
 
@@ -19,7 +19,27 @@ public class S_BubbleSort : S_SortingMethod
 
     public override IEnumerator Sort()
     {
-        Step(Index);
+        while (true)
+        {
+
+            Step(Index);
+            
+
+            yield return null;
+        }
+    }
+
+    protected override void Step(int pIndex)
+    {
+        if (Array[pIndex] > Array[pIndex + 1])
+        {
+            Comparisons += 1;
+
+            (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
+            ArrayWrites += 2;
+            _madechange = true;
+        }
+
         Index++;
 
         if (Index > Length - 2)
@@ -33,24 +53,12 @@ public class S_BubbleSort : S_SortingMethod
                 isSetup = false;
                 Progress = Length;
                 Debug.Log("Sorting done");
-                IsDone= true;
+                IsDone = true;
+                return;
             }
 
             _madechange = false;
-        }
 
-        yield return null;
-    }
-
-    protected override void Step(int pIndex)
-    {
-        if (Array[pIndex] > Array[pIndex + 1])
-        {
-            Comparisons += 1;
-
-            (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
-            ArrayWrites += 2;
-            _madechange = true;
         }
         base.Step(pIndex);
     }

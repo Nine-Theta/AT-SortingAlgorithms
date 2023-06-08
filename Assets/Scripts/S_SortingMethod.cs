@@ -29,7 +29,7 @@ public abstract class S_SortingMethod : ScriptableObject
     protected int ArrayWrites = 0;
 
 
-    private bool _enableFieldEdit = false;
+    protected bool _enableFieldEdit { get; private set; } = false;
 
 
     public virtual void Setup(int[] pArray)

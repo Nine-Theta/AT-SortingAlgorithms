@@ -14,30 +14,21 @@ public class Sorter : MonoBehaviour
 
 
     [Button]
-    public void Setup()
+    public void Reset()
     {
         SortingMethod.Setup(Data.Sortee);
     }
 
     [Button]
-    public void SortStep()
+    public void Sort()
     {
+        SortingMethod.Setup(Data.Sortee);
         StartCoroutine(SortingMethod.Sort());
     }
 
     [Button]
-    public void AutoSort()
+    public void Step()
     {
-        SortingMethod.Setup(Data.Sortee);        
-        _doSort = !_doSort;
-    }
-
-    public void FixedUpdate()
-    {
-        if (_doSort)
-        {
-            StartCoroutine(SortingMethod.Sort());
-            _doSort = !SortingMethod.IsDone;
-        }
+        SortingMethod.Sort();
     }
 }

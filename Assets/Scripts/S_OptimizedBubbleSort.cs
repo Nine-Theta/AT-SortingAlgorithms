@@ -6,11 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Optimized Bubble Sort", menuName ="Sorting Methods/Optimized Bubble")]
 public class S_OptimizedBubbleSort : S_SortingMethod
 {
-    
-    [SerializeField]
+
+    [SerializeField, EnableIf("_enableFieldEdit")]
     private int _maxLength = 0;
 
-    [ShowNonSerializedField]
+    [SerializeField, EnableIf("_enableFieldEdit")]
     private bool _madechange = false;
     public bool isSetup { get; private set; } = false;
 
