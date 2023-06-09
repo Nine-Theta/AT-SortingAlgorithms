@@ -435,8 +435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcd0dd9526ab98488cf6d78bf60541f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cube: {fileID: 0}
   sortables: 5
   randomRange: 100
   progress: 0
   isSorted: 0
-  Sortee: 0400000005000000030000000200000001000000
+  Sortee: 0500000004000000030000000200000001000000

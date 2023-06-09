@@ -44,7 +44,7 @@ public abstract class S_SortingMethod : ScriptableObject
         Comparisons = 0;
         ArrayWrites = 0;
     }
-    public abstract IEnumerator Sort();
+    public abstract IEnumerator Sort(bool pLoop = true);
     protected virtual void Step(int pIndex)
     {
         _stepsTaken++;

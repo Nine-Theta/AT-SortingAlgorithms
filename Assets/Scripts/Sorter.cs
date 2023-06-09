@@ -29,6 +29,6 @@ public class Sorter : MonoBehaviour
     [Button]
     public void Step()
     {
-        SortingMethod.Sort();
+        StartCoroutine(SortingMethod.Sort(false));
     }
 }

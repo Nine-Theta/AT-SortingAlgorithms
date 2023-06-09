@@ -23,25 +23,29 @@ public class S_OptimizedBubbleSort : S_SortingMethod
         isSetup = true;
     }
 
-    public override IEnumerator Sort()
+    public override IEnumerator Sort(bool pLoop)
     {
-        Step(Index);
-        Index++;
-
-        if (Index > _maxLength - 1)
+        do
         {
-            if (!_madechange)
-            {
-                isSetup = false;
-                Progress = Length;
-                Debug.Log("Sorting done");
-                IsDone= true;
-            }
-            Index = 0;
-            _madechange = false;
-        }
+            Step(Index);
+            Index++;
 
-        yield return null;
+            if (Index > _maxLength - 1)
+            {
+                if (!_madechange)
+                {
+                    isSetup = false;
+                    Progress = Length;
+                    Debug.Log("Sorting done");
+                    IsDone = true;
+                    break;
+                }
+                Index = 0;
+                _madechange = false;
+            }
+
+            yield return null;
+        } while (pLoop);
     }
 
     protected override void Step(int pIndex)
