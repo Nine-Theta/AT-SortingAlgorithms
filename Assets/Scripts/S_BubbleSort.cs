@@ -53,12 +53,12 @@ public class S_BubbleSort : S_SortingMethod
     {
         if (Array[pIndex] > Array[pIndex + 1])
         {
-            Comparisons += 1;
 
             (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
             ArrayWrites += 2;
             _madechange = true;
         }
+        Comparisons += 1;
         base.Step(pIndex);
     }
 }

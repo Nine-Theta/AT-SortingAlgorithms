@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class SortingVisual : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int Value;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Position;
 }

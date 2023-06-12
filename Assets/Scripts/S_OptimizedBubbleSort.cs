@@ -52,7 +52,7 @@ public class S_OptimizedBubbleSort : S_SortingMethod
     {
         if (Array[pIndex] > Array[pIndex + 1])
         {
-            Comparisons += 1;
+            
 
             (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
             ArrayWrites += 2;
@@ -64,6 +64,7 @@ public class S_OptimizedBubbleSort : S_SortingMethod
                 Progress++;
             }
         }
+        Comparisons += 1;
         base.Step(pIndex);
     }
 }
