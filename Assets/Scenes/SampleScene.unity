@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 1091928989}
-  SortingMethod: {fileID: 11400000, guid: 86b1dccc55261034e8037e48c907e1fb, type: 2}
+  SortingMethod: {fileID: 11400000, guid: 5d4500bd0bd7f7645bf47870bb31c144, type: 2}
 --- !u!4 &879541439
 Transform:
   m_ObjectHideFlags: 0
@@ -435,9 +435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcd0dd9526ab98488cf6d78bf60541f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cube: {fileID: 0}
-  sortables: 5
+  sortables: 20
   randomRange: 100
   progress: 0
   isSorted: 0
-  Sortee: 0500000004000000030000000200000001000000
+  Sortee: 14000000130000001200000011000000100000000f0000000e0000000d0000000c0000000b0000000a000000090000000800000007000000060000000500000004000000030000000200000001000000

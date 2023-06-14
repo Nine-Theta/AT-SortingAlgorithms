@@ -21,7 +21,6 @@ public class S_BubbleSort : S_SortingMethod
     {
         do
         {
-
             Step(Index);
 
             Index++;

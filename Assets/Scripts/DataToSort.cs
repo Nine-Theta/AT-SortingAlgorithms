@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DataToSort : MonoBehaviour
 {
-    public GameObject Cube;
+    //public GameObject Cube;
 
     [MinValue(0)]
     public int sortables = 10;
@@ -49,7 +49,7 @@ public class DataToSort : MonoBehaviour
     {
         for(int i = 0; i < Sortee.Length; i++)
         {
-            Instantiate(Cube, new Vector3(Sortee[i],0,0), Quaternion.identity);
+            //Instantiate(Cube, new Vector3(Sortee[i],0,0), Quaternion.identity);
         }
     }
 }
