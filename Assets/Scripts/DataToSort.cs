@@ -11,21 +11,23 @@ public class DataToSort : MonoBehaviour
     [MinValue(0)]
     public int sortables = 10;
 
-    public int randomRange = 100;    
+    public int randomRange = 100;
 
-    [ProgressBar("Progress", "sortables", EColor.White)]
-    public int progress = 0;
-    [EnableIf("isSorted")]
-    public bool isSorted = false;
+    public bool UseSeed = false;
+    [ShowIf("UseSeed")]
+    public int RandomSeed;
 
+    [HorizontalLine(color: EColor.Orange)]
     public int[] Sortee;
 
     [Button]
-    public void PopulateArrayRandom()
+    public void PopulateArrayRandomValues()
     {
-        progress = 0;
-        isSorted = false;
+        if(UseSeed)
+            Random.InitState(RandomSeed);
+
         Sortee = new int[sortables];
+
         for(int i = 0; i< sortables; i++)
         {
             Sortee[i] = Random.Range(0,randomRange);
@@ -33,16 +35,57 @@ public class DataToSort : MonoBehaviour
     }
 
     [Button]
+    public void PopulateArrayRandomOrder() //Fisher-Yates Shuffle
+    {
+        PopulateArrayInverted();
+        ShuffleArray();        
+    }
+
+    [Button]
     public void PopulateArrayInverted()
     {
-        isSorted = false;
-        progress = 0;
         Sortee = new int[sortables];
         for (int i = 0; i < sortables; i++)
         {
             Sortee[i] = sortables - i;
         }
-        DoCube();
+    }
+
+    [Button]
+    public void PopulateArrayTriangle()
+    {
+        Sortee = new int[sortables];
+
+        int i;
+
+        for (i = 0; i < sortables*0.5; i++)
+        {
+            Sortee[i] = i*2;
+        }
+
+        for (i = i; i < sortables; i++)
+        {
+            Sortee[i] = sortables*2 - i*2 -1;
+        }
+    }
+
+
+    [Button]
+    public void ShuffleArray()
+    {
+        if (UseSeed)
+            Random.InitState(RandomSeed);
+
+        int rand = 0;
+        int item = 0;
+
+        for (int i = Sortee.Length; i > 1;)
+        {
+            rand = Random.Range(0, i--);
+            item = Sortee[i];
+            Sortee[i] = Sortee[rand];
+            Sortee[rand] = item;
+        }
     }
 
     public void DoCube()

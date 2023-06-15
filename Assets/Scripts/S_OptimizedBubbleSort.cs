@@ -11,16 +11,12 @@ public class S_OptimizedBubbleSort : S_SortingMethod
     private int _maxLength = 0;
 
     [SerializeField, EnableIf("_enableFieldEdit")]
-    private bool _madechange = false;
-    public bool isSetup { get; private set; } = false;
-
-    
+    private bool _madechange = false;    
 
     public override void Setup(int[] pArray )
     {
         base.Setup( pArray );
         _maxLength = Length - 1;
-        isSetup = true;
     }
 
     public override IEnumerator Sort(bool pLoop)
@@ -34,7 +30,6 @@ public class S_OptimizedBubbleSort : S_SortingMethod
             {
                 if (!_madechange)
                 {
-                    isSetup = false;
                     Progress = Length;
                     Debug.Log("Sorting done");
                     IsDone = true;
@@ -52,8 +47,6 @@ public class S_OptimizedBubbleSort : S_SortingMethod
     {
         if (Array[pIndex] > Array[pIndex + 1])
         {
-            
-
             (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
             ArrayWrites += 2;
             _madechange = true;

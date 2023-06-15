@@ -9,15 +9,14 @@ public abstract class S_SortingMethod : ScriptableObject
 
     public int Length { get; protected set; } = 0;
 
-    [HideInInspector]
-    public int LengthDisplay { get; protected set; } = 0;
-
     public bool IsDone { get; protected set; } = false;
 
-    [SerializeField, ProgressBar("Index", "LengthDisplay", EColor.Green)]
+    [SerializeField, ProgressBar("Index", "_lengthDisplay", EColor.Green)]
     protected int Index = 0;
     [SerializeField, ProgressBar("Progress", "Length", EColor.White)]
     protected int Progress = 0;
+
+    private int _lengthDisplay = 0;
 
     [SerializeField, EnableIf("_enableFieldEdit")]
     private int _stepsTaken = 0;
@@ -28,7 +27,6 @@ public abstract class S_SortingMethod : ScriptableObject
     [SerializeField, EnableIf("_enableFieldEdit")]
     protected int ArrayWrites = 0;
 
-
     protected bool _enableFieldEdit { get; private set; } = false;
 
 
@@ -36,7 +34,7 @@ public abstract class S_SortingMethod : ScriptableObject
     {
         Array = pArray;
         Length = pArray.Length;
-        LengthDisplay = pArray.Length - 1;
+        _lengthDisplay = pArray.Length - 1;
         Index = 0;
         Progress = 0;
         IsDone= false;
@@ -49,5 +47,4 @@ public abstract class S_SortingMethod : ScriptableObject
     {
         _stepsTaken++;
     }
-
 }

@@ -21,10 +21,13 @@ public class S_InsertionSort : S_SortingMethod
 
             Step(Index);
 
-            if (Index >= Array.Length-1) break;
+            if (Index >= Array.Length - 1)
+            {
+                IsDone = true;
+                break;
+            }
 
             Index++;
-
 
             yield return null;
         } while (pLoop);
@@ -55,8 +58,6 @@ public class S_InsertionSort : S_SortingMethod
                 ArrayWrites += 1; 
                 break;
             }
-
-
         }
         base.Step(pIndex);
     }

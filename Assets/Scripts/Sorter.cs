@@ -10,9 +10,6 @@ public class Sorter : MonoBehaviour
     [Expandable]
     public S_SortingMethod SortingMethod;
 
-    private bool _doSort = false;
-
-
     [Button]
     public void Reset()
     {
