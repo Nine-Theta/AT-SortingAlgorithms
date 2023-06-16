@@ -18,16 +18,15 @@ public abstract class S_SortingMethod : ScriptableObject
 
     private int _lengthDisplay = 0;
 
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [SerializeField, ReadOnly]
     private int _stepsTaken = 0;
 
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [SerializeField, ReadOnly]
     protected int Comparisons = 0;
 
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [SerializeField, ReadOnly]
     protected int ArrayWrites = 0;
 
-    protected bool _enableFieldEdit { get; private set; } = false;
 
 
     public virtual void Setup(int[] pArray)

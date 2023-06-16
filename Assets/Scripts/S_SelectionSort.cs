@@ -6,11 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Selection Sort", menuName = "Sorting Methods/Selection")]
 public class S_SelectionSort : S_SortingMethod
 {
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [HorizontalLine(1, "_lineColor")]
+    [SerializeField, ReadOnly]
     private int _indexLowest = 0;
-
-    public int i;
-
 
     public override void Setup(int[] pArray)
     {
@@ -40,7 +38,7 @@ public class S_SelectionSort : S_SortingMethod
     {
         _indexLowest = pIndex;
 
-        for (i = 0; i + pIndex < Length; i++)
+        for (int i = 0; i + pIndex < Length; i++)
         {
             Comparisons += 1;
             if (Array[i + pIndex] < Array[_indexLowest])
@@ -53,6 +51,7 @@ public class S_SelectionSort : S_SortingMethod
         {
             (Array[pIndex], Array[_indexLowest]) = (Array[_indexLowest], Array[pIndex]);
             ArrayWrites += 2;
+            Progress++;
         }
 
         base.Step(pIndex);

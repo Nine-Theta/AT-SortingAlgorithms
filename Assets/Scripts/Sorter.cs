@@ -13,13 +13,13 @@ public class Sorter : MonoBehaviour
     [Button]
     public void Reset()
     {
-        SortingMethod.Setup(Data.Sortee);
+        SortingMethod.Setup(Data.ArrayToSort);
     }
 
     [Button]
     public void Sort()
     {
-        SortingMethod.Setup(Data.Sortee);
+        SortingMethod.Setup(Data.ArrayToSort);
         StartCoroutine(SortingMethod.Sort());
     }
 

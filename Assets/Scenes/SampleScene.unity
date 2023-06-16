@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4262ac7c08b98ca4e8ebb11ea5e1b288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 1091928989}
+  Data: {fileID: 0}
   SortingMethod: {fileID: 11400000, guid: a7bad7223d2a14248b527eac161692ab, type: 2}
 --- !u!4 &879541439
 Transform:
@@ -435,8 +435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcd0dd9526ab98488cf6d78bf60541f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortables: 20
+  ArraySize: 10
   randomRange: 100
   UseSeed: 1
   RandomSeed: 0
-  Sortee: 00000000010000000200000003000000080000000a0000000c0000000e000000100000001200000013000000110000000f0000000d0000000b0000000900000007000000050000000600000004000000
+  StairStepSize: 1
+  ArrayToSort: 

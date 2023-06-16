@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -9,28 +10,30 @@ public class DataToSort : MonoBehaviour
     //public GameObject Cube;
 
     [MinValue(0)]
-    public int sortables = 10;
-
+    public int ArraySize = 10;
     public int randomRange = 100;
 
     public bool UseSeed = false;
     [ShowIf("UseSeed")]
     public int RandomSeed;
 
+    [Range(1,20)]
+    public int StairStepSize = 1;
+
     [HorizontalLine(color: EColor.Orange)]
-    public int[] Sortee;
+    public int[] ArrayToSort;
 
     [Button]
     public void PopulateArrayRandomValues()
     {
         if(UseSeed)
-            Random.InitState(RandomSeed);
+            UnityEngine.Random.InitState(RandomSeed);
 
-        Sortee = new int[sortables];
+        ArrayToSort = new int[ArraySize];
 
-        for(int i = 0; i< sortables; i++)
+        for(int i = 0; i< ArraySize; i++)
         {
-            Sortee[i] = Random.Range(0,randomRange);
+            ArrayToSort[i] = UnityEngine.Random.Range(0,randomRange);
         }
     }
 
@@ -44,28 +47,42 @@ public class DataToSort : MonoBehaviour
     [Button]
     public void PopulateArrayInverted()
     {
-        Sortee = new int[sortables];
-        for (int i = 0; i < sortables; i++)
+        ArrayToSort = new int[ArraySize];
+        for (int i = 0; i < ArraySize; i++)
         {
-            Sortee[i] = sortables - i;
+            ArrayToSort[i] = ArraySize - i;
         }
     }
 
     [Button]
     public void PopulateArrayTriangle()
     {
-        Sortee = new int[sortables];
+        ArrayToSort = new int[ArraySize];
 
         int i;
 
-        for (i = 0; i < sortables*0.5; i++)
+        for (i = 0; i < ArraySize*0.5; i++)
         {
-            Sortee[i] = i*2;
+            ArrayToSort[i] = i*2;
         }
 
-        for (i = i; i < sortables; i++)
+        while (i < ArraySize)
         {
-            Sortee[i] = sortables*2 - i*2 -1;
+            ArrayToSort[i] = ArraySize*2 - i*2 -1;
+            i++;
+        }
+    }
+
+    [Button]
+    public void PopulateArrayStair()
+    {
+        ArrayToSort = new int[ArraySize];
+
+        int k = ArraySize / StairStepSize +1;
+
+        for(int i = 0; i < ArraySize; i++)
+        {
+            ArrayToSort[i] = (i % k)*StairStepSize;
         }
     }
 
@@ -74,25 +91,31 @@ public class DataToSort : MonoBehaviour
     public void ShuffleArray()
     {
         if (UseSeed)
-            Random.InitState(RandomSeed);
+            UnityEngine.Random.InitState(RandomSeed);
 
         int rand = 0;
         int item = 0;
 
-        for (int i = Sortee.Length; i > 1;)
+        for (int i = ArrayToSort.Length; i > 1;)
         {
-            rand = Random.Range(0, i--);
-            item = Sortee[i];
-            Sortee[i] = Sortee[rand];
-            Sortee[rand] = item;
+            rand = UnityEngine.Random.Range(0, i--);
+            item = ArrayToSort[i];
+            ArrayToSort[i] = ArrayToSort[rand];
+            ArrayToSort[rand] = item;
         }
+    }
+
+    [Button]
+    public void ReverseArray()
+    {
+        Array.Reverse(ArrayToSort);
     }
 
     public void DoCube()
     {
-        for(int i = 0; i < Sortee.Length; i++)
+        for(int i = 0; i < ArrayToSort.Length; i++)
         {
-            //Instantiate(Cube, new Vector3(Sortee[i],0,0), Quaternion.identity);
+            //Instantiate(Cube, new Vector3(ArrayToSort[i],0,0), Quaternion.identity);
         }
     }
 }
