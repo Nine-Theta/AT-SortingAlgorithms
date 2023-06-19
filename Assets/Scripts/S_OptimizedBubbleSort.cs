@@ -6,11 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Optimized Bubble Sort", menuName ="Sorting Methods/Optimized Bubble")]
 public class S_OptimizedBubbleSort : S_SortingMethod
 {
-
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [HorizontalLine(color: EColor.White)]
+    [SerializeField, ReadOnly]
     private int _maxLength = 0;
 
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [SerializeField, ReadOnly]
     private bool _madechange = false;    
 
     public override void Setup(int[] pArray )
@@ -47,8 +47,7 @@ public class S_OptimizedBubbleSort : S_SortingMethod
     {
         if (Array[pIndex] > Array[pIndex + 1])
         {
-            (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
-            ArrayWrites += 2;
+            Swap(pIndex, pIndex+1);
             _madechange = true;
 
             if (pIndex + 1 == _maxLength)

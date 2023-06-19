@@ -27,6 +27,9 @@ public abstract class S_SortingMethod : ScriptableObject
     [SerializeField, ReadOnly]
     protected int ArrayWrites = 0;
 
+    [SerializeField, ReadOnly]
+    protected int Swaps = 0;
+
 
 
     public virtual void Setup(int[] pArray)
@@ -40,10 +43,20 @@ public abstract class S_SortingMethod : ScriptableObject
         _stepsTaken= 0;
         Comparisons = 0;
         ArrayWrites = 0;
+        Swaps = 0;
     }
     public abstract IEnumerator Sort(bool pLoop = true);
     protected virtual void Step(int pIndex)
     {
         _stepsTaken++;
+    }
+
+    protected void Swap(int pIndexA, int pIndexB)
+    {
+        Debug.Log("A: "+pIndexA);
+        Debug.Log("B: "+pIndexB);
+        (Array[pIndexA], Array[pIndexB]) = (Array[pIndexB], Array[pIndexA]);
+        ArrayWrites += 2;
+        Swaps++;
     }
 }

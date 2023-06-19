@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Sleep Sort", menuName = "Sorting Methods/Sleep")]
 public class S_SleepSort : S_SortingMethod
 {
+
+
     public override void Setup(int[] pArray)
     {
         base.Setup(pArray);

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Selection Sort", menuName = "Sorting Methods/Selection")]
 public class S_SelectionSort : S_SortingMethod
 {
-    [HorizontalLine(1, "_lineColor")]
+    [HorizontalLine(color: EColor.Violet)]
     [SerializeField, ReadOnly]
     private int _indexLowest = 0;
 
@@ -49,10 +49,9 @@ public class S_SelectionSort : S_SortingMethod
 
         if (_indexLowest != pIndex)
         {
-            (Array[pIndex], Array[_indexLowest]) = (Array[_indexLowest], Array[pIndex]);
-            ArrayWrites += 2;
-            Progress++;
+            Swap(pIndex, _indexLowest);         
         }
+        Progress++;
 
         base.Step(pIndex);
     }

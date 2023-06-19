@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bubble Sort", menuName = "Sorting Methods/Bubble")]
 public class S_BubbleSort : S_SortingMethod
 {
+    [HorizontalLine(color: EColor.Gray)]
     [SerializeField, EnableIf("_enableFieldEdit")]
     private bool _madechange = false;
 
@@ -46,8 +47,7 @@ public class S_BubbleSort : S_SortingMethod
     {
         if (Array[pIndex] > Array[pIndex + 1])
         {
-            (Array[pIndex], Array[pIndex + 1]) = (Array[pIndex + 1], Array[pIndex]);
-            ArrayWrites += 2;
+            Swap(pIndex, pIndex + 1);
             _madechange = true;
         }
         Comparisons += 1;
