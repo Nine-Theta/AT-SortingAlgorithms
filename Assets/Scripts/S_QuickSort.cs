@@ -50,7 +50,8 @@ public class S_QuickSort : S_SortingMethod
         int high = iHigh;
         int p;
 
-        if (iLow >= 0 && iHigh >= 0 && iLow < iHigh)
+        Comparisons +=3;
+        if (iLow >= 0 & iHigh >= 0 & iLow < iHigh)
         {
             Step(Index);
             p = Index;
@@ -78,13 +79,14 @@ public class S_QuickSort : S_SortingMethod
         {
             // Move the left index to the right at least once and while the element at
             // the left index is less than the pivot
-            do { i = i + 1; } while (Array[i] < _pivot);
+            do { i = i + 1; Comparisons++; } while (Array[i] < _pivot);
 
             // Move the right index to the left at least once and while the element at
             // the right index is greater than the pivot
-            do { j = j - 1; } while (Array[j] > _pivot);
+            do { j = j - 1; Comparisons++; } while (Array[j] > _pivot);
 
             // If the indices crossed, return
+            Comparisons++;
             if (i >= j)
             {
                 Index = j;

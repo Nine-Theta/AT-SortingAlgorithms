@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Insertion Sort", menuName = "Sorting Methods/Insertion")]
 public class S_InsertionSort : S_SortingMethod
 {
-    [HorizontalLine(color: EColor.Yellow)]
+    [SerializeField, ReadOnly, HorizontalLine(color: EColor.Yellow)]
     private int _selected = 0;
 
     public override void Setup(int[] pArray)

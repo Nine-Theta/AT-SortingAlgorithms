@@ -17,7 +17,7 @@ public class DataToSort : MonoBehaviour
     [ShowIf("UseSeed")]
     public int RandomSeed;
 
-    [Range(1,20)]
+    [Range(0,20)]
     public int StairStepSize = 1;
 
     [HorizontalLine(color: EColor.Orange)]
@@ -86,7 +86,6 @@ public class DataToSort : MonoBehaviour
         }
     }
 
-
     [Button]
     public void ShuffleArray()
     {
@@ -96,7 +95,7 @@ public class DataToSort : MonoBehaviour
         int rand = 0;
         int item = 0;
 
-        for (int i = ArrayToSort.Length; i > 1;)
+        for (int i = ArraySize; i > 1;)
         {
             rand = UnityEngine.Random.Range(0, i--);
             item = ArrayToSort[i];
