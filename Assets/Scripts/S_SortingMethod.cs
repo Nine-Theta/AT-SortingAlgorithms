@@ -9,7 +9,7 @@ public abstract class S_SortingMethod : ScriptableObject
 
     public int Length { get; protected set; } = 0;
 
-    public bool IsDone { get; protected set; } = false;
+    public bool IsDone { get { return _isDone; } protected set { _isDone = value; } }
 
     [SerializeField, ProgressBar("Index", "_lengthDisplay", EColor.Green)]
     protected int Index = 0;
@@ -17,6 +17,9 @@ public abstract class S_SortingMethod : ScriptableObject
     protected int Progress = 0;
 
     private int _lengthDisplay = 0;
+
+    [SerializeField, ReadOnly]
+    private bool _isDone = false;
 
     [SerializeField, ReadOnly]
     private int _stepsTaken = 0;
@@ -53,8 +56,6 @@ public abstract class S_SortingMethod : ScriptableObject
 
     protected void Swap(int pIndexA, int pIndexB)
     {
-        Debug.Log("A: "+pIndexA);
-        Debug.Log("B: "+pIndexB);
         (Array[pIndexA], Array[pIndexB]) = (Array[pIndexB], Array[pIndexA]);
         ArrayWrites += 2;
         Swaps++;

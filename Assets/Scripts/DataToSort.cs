@@ -17,7 +17,7 @@ public class DataToSort : MonoBehaviour
     [ShowIf("UseSeed")]
     public int RandomSeed;
 
-    [Range(0,20)]
+    [MinValue(0)]
     public int StairStepSize = 1;
 
     [HorizontalLine(color: EColor.Orange)]
