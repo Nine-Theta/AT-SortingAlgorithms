@@ -177,6 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879541439}
   - component: {fileID: 879541438}
+  - component: {fileID: 879541440}
   m_Layer: 0
   m_Name: Sorter
   m_TagString: Untagged
@@ -213,6 +214,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879541440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879541437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e59f2628eacfe439477fda46ca1a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sorter: {fileID: 879541438}
+  _data: {fileID: 1091928989}
+  _methodsToTest:
+  - {fileID: 11400000, guid: 86b1dccc55261034e8037e48c907e1fb, type: 2}
+  - {fileID: 11400000, guid: 7cf6fc918288bdb47b63a661bf301e7f, type: 2}
+  - {fileID: 11400000, guid: 5d4500bd0bd7f7645bf47870bb31c144, type: 2}
+  _iterationsPerData: 1
 --- !u!1 &1091928986
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArraySize: 20
-  randomRange: 100
+  randomRange: 0
   UseSeed: 1
   RandomSeed: 0
   StairStepSize: 2
-  ArrayToSort: 14000000130000001200000011000000100000000f0000000e0000000d0000000c0000000b0000000a000000090000000800000007000000060000000500000004000000030000000200000001000000
+  ArrayToSort: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

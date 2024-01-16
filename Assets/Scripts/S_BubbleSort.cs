@@ -7,7 +7,7 @@ using UnityEngine;
 public class S_BubbleSort : S_SortingMethod
 {
     [HorizontalLine(color: EColor.Gray)]
-    [SerializeField, EnableIf("_enableFieldEdit")]
+    [SerializeField, ReadOnly]
     private bool _madechange = false;
 
     public override void Setup(int[] pArray)
@@ -31,8 +31,7 @@ public class S_BubbleSort : S_SortingMethod
                 if (!_madechange)
                 {
                     Progress = Length;
-                    Debug.Log("Sorting done");
-                    IsDone = true;
+                    InternalDoneSorting.Invoke();
                     break;
                 }
 
@@ -45,12 +44,12 @@ public class S_BubbleSort : S_SortingMethod
 
     protected override void Step(int pIndex)
     {
+        Comparisons += 1;
         if (Array[pIndex] > Array[pIndex + 1])
         {
             Swap(pIndex, pIndex + 1);
             _madechange = true;
         }
-        Comparisons += 1;
         base.Step(pIndex);
     }
 }

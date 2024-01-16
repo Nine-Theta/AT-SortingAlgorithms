@@ -24,7 +24,7 @@ public class S_SelectionSort : S_SortingMethod
 
             if (Index >= Array.Length - 1)
             {
-                IsDone = true;
+                InternalDoneSorting.Invoke();
                 break;
             }
 
