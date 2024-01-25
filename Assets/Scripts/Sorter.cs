@@ -7,7 +7,7 @@ using UnityEngine;
 public class Sorter : MonoBehaviour
 {
     public DataToSort Data;
-    [Expandable]
+    //[Expandable]
     public S_SortingMethod SortingMethod;
 
     [Button]

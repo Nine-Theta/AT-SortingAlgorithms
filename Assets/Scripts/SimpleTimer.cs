@@ -10,12 +10,12 @@ public class SimpleTimer
     public void Start()
     {
         _startTime = Time.unscaledTime;
-        Debug.Log("started timer");
+        //Debug.Log("started timer");
     }
 
     public float Stop()
     {
-        Debug.Log("stopped timer");
+        //Debug.Log("stopped timer");
         return (Time.unscaledTime - _startTime);
     }
 }

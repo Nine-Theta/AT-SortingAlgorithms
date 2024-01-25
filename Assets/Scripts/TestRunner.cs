@@ -6,15 +6,15 @@ using UnityEngine;
 
 public enum DataSets
 {
-    Inverted_,
-    Pyramid__,
-    RndOrder_,
-    StairTwo_,
+    Inverted,
+    Pyramid,
+    Random_Order,
+    StairTwo,
     StairFive,
-    Half_Half,
-    AllZero__,
-    RndValues,
-    Sorted___,
+    Half_n_Half,
+    All_Zero,
+    Random_Values,
+    Sorted,
 }
 
 public class TestRunner : MonoBehaviour
@@ -53,6 +53,8 @@ public class TestRunner : MonoBehaviour
         _iterationCounter = 0;
         _setCounter = 0;
 
+        _data.ArraySize = _DataSize;
+
         _sorter.SortingMethod = _methodsToTest[_methodCounter];
 
         _sorter.SortingMethod.DoneSorting.AddListener(OnSortingDone);
@@ -68,8 +70,6 @@ public class TestRunner : MonoBehaviour
 
     private void OnSortingDone()
     {
-        Debug.Log("Done for this sort");
-
         WriteToLog(_methodsToTest[_methodCounter], (DataSets)_setCounter);
 
         _iterationCounter++;
@@ -107,16 +107,16 @@ public class TestRunner : MonoBehaviour
     {
         switch (pDataSet)
         {
-            case DataSets.Inverted_: //Inverted
+            case DataSets.Inverted: //Inverted
                 _data.PopulateArrayInverted();
                 break;
-            case DataSets.Pyramid__: //Pyramid
+            case DataSets.Pyramid: //Pyramid
                 _data.PopulateArrayTriangle();
                 break;
-            case DataSets.RndOrder_: //Random Order
+            case DataSets.Random_Order: //Random Order
                 _data.PopulateArrayRandomOrder();
                 break;
-            case DataSets.StairTwo_: //Stair 2
+            case DataSets.StairTwo: //Stair 2
                 _data.StairStepSize = 2;
                 _data.PopulateArrayStair();
                 break;
@@ -124,19 +124,19 @@ public class TestRunner : MonoBehaviour
                 _data.StairStepSize = 5;
                 _data.PopulateArrayStair();
                 break;
-            case DataSets.Half_Half: //Half-n-Half
+            case DataSets.Half_n_Half: //Half-n-Half
                 _data.StairStepSize = _data.ArraySize;
                 _data.PopulateArrayStair();
                 break;
-            case DataSets.AllZero__: //All 0
+            case DataSets.All_Zero: //All 0
                 _data.randomRange = 0;
                 _data.PopulateArrayRandomValues();
                 break;
-            case DataSets.RndValues: //Random Values 0-100
+            case DataSets.Random_Values: //Random Values 0-100
                 _data.randomRange = 100;
                 _data.PopulateArrayRandomValues();
                 break;
-            case DataSets.Sorted___: //Sorted
+            case DataSets.Sorted: //Sorted
                 _data.PopulateArrayInverted();
                 _data.ReverseArray();
                 break;
@@ -150,9 +150,22 @@ public class TestRunner : MonoBehaviour
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path + _filename + ".txt", true);
 
-        string text = String.Format("{0} | {1} [{2}] | Writes: [{3}] | Comparisons: [{4}] | Time: [{5}]", pMethod.name, pDataSet, pMethod.Length, pMethod.ArrayWrites, pMethod.Comparisons, pMethod.ElapsedTime);// "Method, Size, variation, arraywrites, time";
 
+       
+
+        if (_iterationCounter == 0)
+        {
+            if (_setCounter == 0)
+                writer.WriteLine("[" + pMethod.name + "]");
+
+            writer.WriteLine(String.Format("  {0} [{1}]  ", pDataSet, pMethod.Length));
+        }
+
+        string text = String.Format("    Writes: {0} | Comparisons: {1} | Time: {2}", pMethod.ArrayWrites, pMethod.Comparisons, pMethod.ElapsedTime);// "Method, Size, variation, arraywrites, time";
         writer.WriteLine(text);
+
+
+        
         writer.Close();
     }
 }

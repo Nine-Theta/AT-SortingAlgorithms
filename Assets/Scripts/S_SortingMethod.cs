@@ -16,29 +16,29 @@ public abstract class S_SortingMethod : ScriptableObject
 
     protected SimpleTimer Timer = new SimpleTimer();
 
-    [SerializeField, ProgressBar("Index", "_lengthDisplay", EColor.Green)]
+    //[SerializeField, ProgressBar("Index", "_lengthDisplay", EColor.Green)]
     protected int Index = 0;
-    [SerializeField, ProgressBar("Progress", "Length", EColor.White)]
+    //[SerializeField, ProgressBar("Progress", "Length", EColor.White)]
     protected int Progress = 0;
 
     private int _lengthDisplay = 0;
 
-    [SerializeField, ReadOnly]
+    //[SerializeField, ReadOnly]
     private bool _isDone = false;
 
-    [SerializeField, ReadOnly]
+    //[SerializeField, ReadOnly]
     private int _stepsTaken = 0;
 
-    [SerializeField, ReadOnly]
+    //[SerializeField, ReadOnly]
     public int Comparisons = 0;
 
-    [SerializeField, ReadOnly]
+    //[SerializeField, ReadOnly]
     public int ArrayWrites = 0;
 
-    [SerializeField, ReadOnly]
+    //[SerializeField, ReadOnly]
     protected int Swaps = 0;
 
-    [SerializeField, ReadOnly]
+    //[SerializeField, ReadOnly]
     public float ElapsedTime = 0f;
 
 
