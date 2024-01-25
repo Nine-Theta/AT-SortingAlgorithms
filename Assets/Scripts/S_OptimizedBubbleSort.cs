@@ -31,8 +31,7 @@ public class S_OptimizedBubbleSort : S_SortingMethod
                 if (!_madechange)
                 {
                     Progress = Length;
-                    Debug.Log("Sorting done");
-                    IsDone = true;
+                    InternalDoneSorting.Invoke();
                     break;
                 }
                 Index = 0;
@@ -45,6 +44,7 @@ public class S_OptimizedBubbleSort : S_SortingMethod
 
     protected override void Step(int pIndex)
     {
+        Comparisons += 1;
         if (Array[pIndex] > Array[pIndex + 1])
         {
             Swap(pIndex, pIndex+1);
@@ -56,7 +56,6 @@ public class S_OptimizedBubbleSort : S_SortingMethod
                 Progress++;
             }
         }
-        Comparisons += 1;
         base.Step(pIndex);
     }
 }

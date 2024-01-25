@@ -24,7 +24,7 @@ public class S_InsertionSort : S_SortingMethod
 
             if (Index >= Array.Length - 1)
             {
-                IsDone = true;
+                InternalDoneSorting.Invoke();
                 break;
             }
 
@@ -53,7 +53,7 @@ public class S_InsertionSort : S_SortingMethod
                 break;
             }
 
-            if(i == pIndex)
+            if (i == pIndex)
             {
                 Array[pIndex - i] = _selected;
                 ArrayWrites += 1; 

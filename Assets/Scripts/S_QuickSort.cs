@@ -13,66 +13,50 @@ public class S_QuickSort : S_SortingMethod
     private int _pivot;
 
     [SerializeField, ReadOnly]
-    int iLow = 0;
+    private int _iLow = 0;
     [SerializeField, ReadOnly]
-    int iHigh = 0;
+    private int _iHigh = 0;
 
     public override void Setup(int[] pArray)
     {
         base.Setup(pArray);
 
-        iLow = 0;
-        iHigh = Length - 1;
-
-        /*iLow = Length - 1;
-        iHigh = 0;
-
-        Comparisons++;
-        if (Array[Length - 1] < Array[0])
-        {
-            Swap(0, Length - 1);
-        }
-
-        Comparisons++;
-        if (Array[Length / 2] < Array[Length - 1])
-        {
-            Swap(Length / 2, Length - 1);
-        }
-
-
-        _pivot = Length - 1;
-        _partisionIndex = 0;
-        _partisionSize = Length;*/
+        _iLow = 0;
+        _iHigh = Length - 1;
     }
 
     public override IEnumerator Sort(bool pLoop = true)
     {
-        int high = iHigh;
+        int high = _iHigh;
         int p;
 
-        Comparisons +=3;
-        if (iLow >= 0 & iHigh >= 0 & iLow < iHigh)
+        Comparisons += 3;
+        if (_iLow >= 0 & _iHigh >= 0 & _iLow < _iHigh)
         {
             Step(Index);
             p = Index;
-            iHigh = p;
+            _iHigh = p;
             yield return Sort(); // Note: the pivot is now included
-            iLow = p + 1;
-            iHigh = high;
+            _iLow = p + 1;
+            _iHigh = high;
             yield return Sort();
+        }
+        else if(_iLow == Length-1)
+        {
+            InternalDoneSorting.Invoke();
         }
     }
 
     protected override void Step(int pIndex)
     {
         // Pivot value
-        _pivot = Array[((iHigh - iLow) / 2) + iLow]; // The value in the middle of the array
+        _pivot = Array[((_iHigh - _iLow) / 2) + _iLow]; // The value in the middle of the array
 
         // Left index
-        int i = iLow - 1;
+        int i = _iLow - 1;
 
         // Right index
-        int j = iHigh + 1;
+        int j = _iHigh + 1;
 
 
         while (true)
@@ -98,7 +82,6 @@ public class S_QuickSort : S_SortingMethod
                 Swap(i, j);
             }
         }
-
 
         base.Step(pIndex);
     }
